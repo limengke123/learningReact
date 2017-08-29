@@ -1,4 +1,5 @@
 import React from "react";
+import { AppContainer } from 'react-hot-loader';
 
 
 class App extends React.Component{
