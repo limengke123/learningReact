@@ -18,8 +18,10 @@ const staticPath = "../src";
 app.use(bodyparser());
 
 app.use(static(
-    path.join( __dirname,  staticPath)
-))
+    path.join( __dirname,  "../dist")
+));
+
+
 
 
 
