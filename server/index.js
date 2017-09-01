@@ -7,9 +7,11 @@ const bodyparser = require('koa-bodyparser');
 const static = require("koa-static");
 const path = require("path");
 const port = "8080";
+const indexRouter = require('./router/index');
 
 const app = new koa();
 const home = new Router();
+
 
 const staticPath = "../src";
 
@@ -21,7 +23,7 @@ app.use(static(
     path.join( __dirname,  "../dist")
 ));
 
-
+app.use(indexRouter.routes()).use(indexRouter.allowedMethods());
 
 
 
