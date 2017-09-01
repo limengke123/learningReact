@@ -12,6 +12,7 @@ const indexRouter = require('./router/index');
 const app = new koa();
 const home = new Router();
 
+
 const staticPath = "../src";
 
 
