@@ -52,7 +52,9 @@ async function getResLink(index,url) {
 
 
 
-module.exports = dowload;
+module.exports = {
+    dowload
+};
 
 
 

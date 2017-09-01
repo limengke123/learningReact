@@ -4,7 +4,7 @@
   "description": "react-pxq",
   "main": "index.html",
   "scripts": {
-    "start": "nodemon ./server/index.js",
+    "start": "nodemon  ./server/index.js",
     "dev": "node server.js",
     "hot": "node server_hot.js",
     "dist": "webpack --config webpack.config.js --progress --colors --watch -p"
@@ -52,6 +52,7 @@
     "file-loader": "^0.8.5",
     "html-webpack-plugin": "^2.22.0",
     "http-proxy-middleware": "^0.17.3",
+    "iconv-lite": "^0.4.18",
     "jsx-loader": "^0.13.2",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",

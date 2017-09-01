@@ -14,7 +14,7 @@ export default class List extends React.Component{
         this.getCount();
     }
     getCount(){
-        fetch('/api/test').then(res=>res.json())
+        fetch('/api/random').then(res=>res.json())
             .then(count=>{
                 this.setState({
                     count
