@@ -7,6 +7,6 @@ const apiController = require('./controller');
 const api = new router();
 
 api.get('/test',apiController.test);
-api.get('/random',apiController.random);
+api.post('/random',apiController.random);
 
 module.exports = api;

@@ -2,28 +2,40 @@ import React from 'react';
 import {Link} from 'react-router';
 
 
-export default class List extends React.Component{
-    constructor(){
+export default class List extends React.Component {
+    constructor() {
         super(...arguments);
         this.state = {
-            count : ""
+            count: ""
         };
         //this.getCount = this.getCount.bind(this);
     };
-    componentDidMount(){
+
+    componentDidMount() {
         this.getCount();
     }
-    getCount(){
-        fetch('/api/random').then(res=>res.json())
-            .then(count=>{
+
+    getCount() {
+        fetch('/api/random', {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: JSON.stringify({
+                startNum: 1,
+                endNum: 10
+            })
+        }).then(res => res.json())
+            .then(count => {
                 this.setState({
                     count
                 })
             })
     }
-    render(){
+
+    render() {
         const count = this.state.count;
-        return(
+        return (
             <div className="list-page">
                 <button onClick={this.getCount.bind(this)}>点击</button>
                 <div>{count}</div>
