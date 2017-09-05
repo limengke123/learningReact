@@ -12,14 +12,14 @@ export default class List extends React.Component {
     };
 
     componentDidMount() {
-        this.getCount();
+        //this.getCount();
     }
 
     getCount() {
         fetch('/api/random', {
             method: "POST",
             headers: {
-                'Content-Type': 'application/x-www-form-urlencoded'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify({
                 startNum: 1,
