@@ -10,17 +10,16 @@ const port = "8080";
 const indexRouter = require('./router/index');
 
 const app = new koa();
-const home = new Router();
 
 
-const staticPath = "../src";
+const staticPath = "../dist";
 
 
 //ctx.body解析中间件
 app.use(bodyparser());
 
 app.use(static(
-    path.join( __dirname,  "../dist")
+    path.join( __dirname,  staticPath)
 ));
 
 app.use(indexRouter.routes()).use(indexRouter.allowedMethods());

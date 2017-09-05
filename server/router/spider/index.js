@@ -7,7 +7,7 @@ const spiderController = require("./controller");
 
 const spider = new router();
 
-spider.get('/dowload',spiderController);
+spider.get('/dowload',spiderController.dowload);
 
 
 module.exports = spider;
