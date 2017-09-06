@@ -1,8 +1,9 @@
 import React from "react";
-import HomePage from './page/home';
-import {Router,Link,IndexRoute,Route,hashHistory} from 'react-router';
-import ListPage from './page/list';
+import HomePage from './page/home/home';
+import {Router,Link,IndexRoute,Route,hashHistory,browserHistory} from 'react-router';
+import ListPage from './page/list/list';
 import Header from './components/header/header';
+import Footer from './components/footer/footer';
 import './static/css/reset.css';
 import './app.less'
 class MainPage extends React.Component{
@@ -11,6 +12,7 @@ class MainPage extends React.Component{
             <div className="main-page">
                 <Header/>
                 {this.props.children}
+                <Footer/>
             </div>
         )
     }
@@ -20,7 +22,7 @@ class MainPage extends React.Component{
 class App extends React.Component{
     render(){
         return(
-            <Router history={hashHistory}>
+            <Router history={browserHistory}>
                 <Route path='/' component={MainPage}>
                     <IndexRoute component={HomePage}/>
                     <Route path="/list" component={ListPage}/>

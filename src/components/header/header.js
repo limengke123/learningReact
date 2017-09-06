@@ -9,14 +9,21 @@ export default class Header extends React.Component {
             items: [
                 {
                     text: "首页",
-                    url:"/home",
-                    key:1
+                    url: "/",
+                    id: 1
+                }, {
+                    text: "列表",
+                    url: "/list",
+                    id: 2
+                }, {
+                    text: "凤梨罐头",
+                    url: "/list",
+                    id: 3
+                }, {
+                    text: "一分钟",
+                    url: "/list",
+                    id: 4
                 },
-                {
-                    text:"列表",
-                    url:"/list",
-                    key:2
-                }
             ]
         }
 
@@ -24,17 +31,19 @@ export default class Header extends React.Component {
     }
 
     render() {
-        const headerItem = this.state.items.map((item,index)=>{
+        let headerItem = this.state.items.map(item => {
             return (
-                <ul>
-                    <HeaderItem data={item} key={item.key}/>
-                </ul>
+                <HeaderItem data={item} key={item.id}/>
             )
-        })
+        });
         return (
-            <div className="header">
-                <img src={require('../../static/image/logo_dog.png')} className="logo-pic"/>
-                {headerItem}
+            <div className="header-wrap">
+                <div className="header">
+                    <img src={require('../../static/image/logo_dog.png')} className="logo-pic"/>
+                    <div className="item-wrap">
+                        {headerItem}
+                    </div>
+                </div>
             </div>
         )
     }
