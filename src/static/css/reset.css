@@ -16,6 +16,9 @@ time, mark, audio, video {
     outline: 0;
     /*vertical-align: baseline; delete by jican*/
 }
+*{
+    box-sizing: border-box;
+}
 html, body {
     width: 100%;
     height: 100%;
