@@ -7,8 +7,9 @@ class HeaderItem extends React.Component{
     }
     render(){
         const data = this.props.data;
+        const className = data.selected ? "header-item selected" : "header-item";
         return(
-            <Link className="header-item" to={data.url}>
+            <Link className={className} to={data.url}>
                 {data.text}
             </Link>
         )
