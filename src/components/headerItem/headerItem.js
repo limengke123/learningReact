@@ -5,11 +5,14 @@ class HeaderItem extends React.Component{
     constructor(){
         super(...arguments)
     }
+    linkHandler(e){
+        alert(e)
+    }
     render(){
         const data = this.props.data;
         const className = data.selected ? "header-item selected" : "header-item";
         return(
-            <Link className={className} to={data.url}>
+            <Link className={className} to={data.url} onClick={this.linkHandler}>
                 {data.text}
             </Link>
         )
