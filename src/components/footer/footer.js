@@ -8,7 +8,7 @@ export default class Footer extends React.Component{
         }
     }
     render(){
-        const data = {text:"测试"};
+        const data = {text:"footer"};
         return(
             <div className="footer-wrap">
                 <Line data={data}/>

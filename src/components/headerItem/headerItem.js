@@ -12,7 +12,7 @@ class HeaderItem extends React.Component{
         const data = this.props.data;
         const className = data.selected ? "header-item selected" : "header-item";
         return(
-            <Link className={className} to={data.url} onClick={this.linkHandler}>
+            <Link className={className} to={data.url} >
                 {data.text}
             </Link>
         )
