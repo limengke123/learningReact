@@ -10,6 +10,7 @@ export default class Header extends React.Component {
                 {
                     text: "首页",
                     url: "/",
+                    selected:true,
                     id: 1
                 }, {
                     text: "列表",
@@ -26,8 +27,6 @@ export default class Header extends React.Component {
                 },
             ]
         }
-
-
     }
 
     render() {
