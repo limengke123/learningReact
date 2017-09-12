@@ -1,15 +1,14 @@
 const request = require('request-promise');
 const iconv = require('iconv-lite');
-const {getRandom} = require('../../../utils/utils');
+const {getRandom} = require('../../utils/utils');
+const mongoose = require('mongoose');
+const {User} = require('../model/index');
+const userController = require('./user/index');
 const apiController = {
     test: async function (ctx) {
         const url = 'http://www.dytt8.net/';
         const body = await request.get(url);
         ctx.response.type = "text";
-        //const body1 = iconv.decode(body,'gb2312');
-        //console.log(iconv.decode(body,'utf-8'));
-        //console.log(iconv.decode(body,'gb2312'));
-        //console.log(body);
         ctx.body = body
     },
     random: async function (ctx) {
@@ -22,6 +21,7 @@ const apiController = {
             ctx.body = getRandom(1, 100)
         }
     },
+    userController,
 };
 
 module.exports = apiController;

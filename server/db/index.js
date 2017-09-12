@@ -2,13 +2,15 @@
 
 const mongoose = require("mongoose");
 
-export default function connectDatebase( url ){
+const connectDatebase = async function ( url ){
     return new Promise((resolve,reject)=>{
         mongoose.connection
             .on('error',error=>reject(error))
-            .on('close',()=>console.log())
-            .once('open',()=>resolve(mongoose.connections[0]))
+            .on('close',()=>global.console.log(1))
+            .once('open',()=>resolve(mongoose.connections[0]));
 
-        mongoose.connect(url)
+        mongoose.connect(url,{useMongoClient: true})
     })
-}
+};
+
+module.exports = connectDatebase;

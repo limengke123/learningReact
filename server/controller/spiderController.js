@@ -5,7 +5,7 @@ const fs = require('fs');
 const request = require("request-promise");
 const cheerio = require("cheerio");
 const mkdirp = require('mkdirp');
-const config = require('./config');
+const config = require('../router/spider/config');
 const dowload = async (ctx,next)=>{
     const dir = 'images';
     let links = [];

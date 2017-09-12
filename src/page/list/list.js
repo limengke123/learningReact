@@ -6,16 +6,16 @@ export default class List extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            count: ""
+            count: "",
+            isCount:false
         };
-        //this.getCount = this.getCount.bind(this);
     };
 
-    componentDidMount() {
+    /*componentDidMount() {
         //this.getCount();
-    }
+    }*/
 
-    getCount() {
+    /*getCount() {
         fetch('/api/random', {
             method: "POST",
             headers: {
@@ -31,15 +31,12 @@ export default class List extends React.Component {
                     count
                 })
             })
-    }
+    }*/
 
     render() {
-        const count = this.state.count;
         return (
             <div className="list-page">
-                <button onClick={this.getCount.bind(this)}>点击</button>
-                <div>{count}</div>
-                <Link to="/">to home-page</Link>
+
             </div>
         )
     }

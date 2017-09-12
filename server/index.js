@@ -1,31 +1,21 @@
 /**
- * Created by li on 2017/7/14.
+ * Created by li on 2017/9/12.
  */
-const koa = require('koa');
-const Router = require('koa-router');
-const bodyparser = require('koa-bodyparser');
-const static = require("koa-static");
-const path = require("path");
+
+const app = require('./app');
+const connectDatabase = require('./db/index');
+const dbConfig = require('./config/index');
+const mongoos = require('mongoose');
+mongoos.Promise = global.Promise;
 const port = "8080";
-const indexRouter = require('./router/index');
 
-const app = new koa();
-
-
-const staticPath = "../dist";
-
-
-//ctx.body解析中间件
-app.use(bodyparser());
-
-app.use(static(
-    path.join( __dirname,  staticPath)
-));
-
-app.use(indexRouter.routes()).use(indexRouter.allowedMethods());
-
-
-
-app.listen(port);
-
-console.log(`server started on port ${port}`);
+(async () => {
+    try {
+        const info = await connectDatabase(dbConfig.mongo.url);
+        console.log(`Connected to ${info.host}:${info.port}/${info.name}`);
+    } catch (error) {
+        console.log('Unable to connect to database');
+    }
+    await app.listen(port);
+    console.log(`Server started on port ${port}`);
+})();
