@@ -19,7 +19,7 @@ const userController = {
         }
     },
     deleteUser : async (ctx)=>{
-        let data = await deleteUser(ctx,{name:"limengke1111"});
+        let data = await deleteUser(ctx,{name:"limengke2"});
         ctx.body= {
             success:true,
             data
@@ -29,7 +29,7 @@ const userController = {
         const data = await findAllUser();
         ctx.body = {
             success:true,
-            data:this
+            data:data
         }
     },
     update: async (ctx)=>{

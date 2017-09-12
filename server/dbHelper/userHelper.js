@@ -27,7 +27,7 @@ const userHelper = {
         let flag = false;
         console.log('flag==========>' + flag);
         await User.remove(id, err => {
-            console.log(err)
+            console.log(err);
             flag = !err
         }).catch(err => {
             console.error(err);

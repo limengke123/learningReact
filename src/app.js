@@ -4,6 +4,7 @@ import {Router,Link,IndexRoute,Route,hashHistory,browserHistory} from 'react-rou
 import ListPage from './page/list/list';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
+import MangerPage from './page/manger/mangerPage';
 import './static/css/reset.css';
 import './app.less'
 class MainPage extends React.Component{
@@ -26,6 +27,7 @@ class App extends React.Component{
                 <Route path='/' component={MainPage}>
                     <IndexRoute component={HomePage}/>
                     <Route path="/list" component={ListPage}/>
+                    <Route path="/manger" component={MangerPage}/>
                 </Route>
             </Router>
         )

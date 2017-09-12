@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/bailicangdu/pxq#readme",
   "dependencies": {
+    "antd": "^2.13.1",
     "github-markdown-css": "^2.4.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
