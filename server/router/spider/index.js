@@ -3,7 +3,7 @@
  */
 const router = require("koa-router");
 
-const spiderController = require("./controller");
+const {spiderController} = require("../../controller/index");
 
 const spider = new router();
 

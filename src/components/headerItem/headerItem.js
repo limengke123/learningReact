@@ -6,7 +6,7 @@ class HeaderItem extends React.Component{
         super(...arguments)
     }
     linkHandler(e){
-        alert(e)
+        console.log(e)
     }
     render(){
         const data = this.props.data;
