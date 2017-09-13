@@ -11,12 +11,16 @@ const indexRouter = require('./router/index');
 const app = new koa();
 
 
-const staticPath = "../dist";
+const bundlePath = "../dist";
+const staticPath = "../src";
 
 
 //ctx.body解析中间件
 app.use(bodyparser());
 
+app.use(static(
+    path.join( __dirname,  bundlePath)
+));
 app.use(static(
     path.join( __dirname,  staticPath)
 ));
