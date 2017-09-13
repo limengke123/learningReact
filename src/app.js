@@ -27,8 +27,8 @@ class App extends React.Component{
                 <Route path='/' component={MainPage}>
                     <IndexRoute component={HomePage}/>
                     <Route path="/list" component={ListPage}/>
-                    <Route path="/manger" component={MangerPage}/>
                 </Route>
+                <Route path="/manger" component={MangerPage}/>
             </Router>
         )
     }
