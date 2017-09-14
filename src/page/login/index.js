@@ -16,13 +16,17 @@ class Login extends React.Component {
 
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                post('/user/login', values)
+                post('/user/register', values)
                     .then((res) => {
                         if (res) {
-                            message.info('登录成功');
-                            this.context.router.push('/');
+                            if(res.status === "success"){
+                                message.info('注册');
+                                this.context.router.push('/');
+                            } else if(res.status === "error"){
+                                message.info(res.msg)
+                            }
                         } else {
-                            message.info('登录失败，账号或密码错误');
+                            message.info('服务端错误');
                         }
                     });
             }

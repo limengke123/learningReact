@@ -41,12 +41,11 @@ const login = async (ctx) => {
     console.log('Req:', userInfo);
     const res = await userHelper.login(userInfo);
     console.log('loginData:', res);
-
     if (res && res.data) {
         const tokenInfo = {username: res.data.username};
         const token = generateToken(tokenInfo);
-        //ctx.req.header('Authorization', token);
-        ctx.cookies.set('token', token);
+        ctx.response.set('Authorization', token);
+        //ctx.cookies.set('token', token);
         ctx.body = res;
     } else {
         ctx.body = res;

@@ -4,10 +4,10 @@
 const {User} = require('../model/index');
 const mongoose = require('mongoose');
 const {codeStatus} = require('../config/index');
-const {common} = codeStatus;
+const {common,account} = codeStatus;
 const getIncrementId = require('../model/common/counters');
 
-const COLLECTTION = 'User';
+//const COLLECTTION = 'User';
 //const User = mongoose.model(COLLECTTION);
 const userHelper = {
     findAllUser: async () => {
@@ -69,8 +69,8 @@ const userHelper = {
     },
     register: async function (info) {
         try {
-            //const uid = await getIncrementId(COLLECTTION);
-            const uid = "48454545445";
+            const uid = await getIncrementId("counters");
+            //const uid = "48454545445";
             if (uid) {
                 info.uid = uid;
                 info.updateTime = Date.now();

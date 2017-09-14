@@ -16,7 +16,7 @@ const CounterSchema = Schema({
     }
 });
 
-const Counter = mongoose.model('cims_counters',CounterSchema);
+const Counter = mongoose.model('counters',CounterSchema);
 
 const getIncrementId = async (tableName)=>{
     try{
