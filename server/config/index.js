@@ -1,11 +1,9 @@
 
-const config = {
-    mongoHome:{
-        url:"mongodb://localhost:27017/testDB"
-    },
-    mongo:{
-        url:"mongodb://localhost:27017/testdb1"
-    },
-};
 
-module.exports =  config;
+const codeStatus = require('./codeStatus');
+const dbConfig = require('./dbConfig');
+
+module.exports = {
+    codeStatus,
+    dbConfig,
+};

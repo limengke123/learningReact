@@ -22,7 +22,7 @@ export default class Header extends React.Component {
                     id: 3
                 }, {
                     text: "一分钟",
-                    url: "/list",
+                    url: "/login",
                     id: 4
                 },
             ]

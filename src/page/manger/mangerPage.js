@@ -3,22 +3,22 @@
 import React from 'react';
 import { Link } from 'react-router';
 import { Menu, Icon } from 'antd';
-import style from './mangerPage';
-
+//import style from './mangerPage';
+import './manger.less'
 const SubMenu = Menu.SubMenu;
 const MenuItem = Menu.Item;
 
-class HomeLayout extends React.Component {
+class MangerPage extends React.Component {
     render () {
         const {children} = this.props;
         return (
-            <div>
-                <header className={style.header}>
+            <div className="manger-page">
+                <header className="header">
                     <Link to="/">ReactManager</Link>
                 </header>
 
-                <main className={style.main}>
-                    <div className={style.menu}>
+                <main className="main">
+                    <div className="menu">
                         <Menu mode="inline" theme="dark" style={{width: '240px'}}>
                             <SubMenu key="user" title={<span><Icon type="user"/><span>用户管理</span></span>}>
                                 <MenuItem key="user-list">
@@ -40,7 +40,7 @@ class HomeLayout extends React.Component {
                         </Menu>
                     </div>
 
-                    <div className={style.content}>
+                    <div className="content">
                         {children}
                     </div>
                 </main>

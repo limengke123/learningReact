@@ -3,9 +3,13 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-    name: {
+    uid: { type: Number },
+    username: {
         type: String,
+        unique: true,
+        trim: true,
         required: true,
+        index: true
     },
     email: {
         type: String,
@@ -16,6 +20,8 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
+    updateTime: Number,
 });
+UserSchema.set('autoIndex', true);
 const User = mongoose.model('User',UserSchema);
 module.exports = User;

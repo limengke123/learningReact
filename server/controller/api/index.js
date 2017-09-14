@@ -1,9 +1,6 @@
 const request = require('request-promise');
 const iconv = require('iconv-lite');
-const {getRandom} = require('../../utils/utils');
-const mongoose = require('mongoose');
-const {User} = require('../model/index');
-const userController = require('./user/index');
+const {getRandom} = require('../../../utils/utils');
 const apiController = {
     test: async function (ctx) {
         const url = 'http://www.dytt8.net/';
@@ -20,8 +17,7 @@ const apiController = {
         } else {
             ctx.body = getRandom(1, 100)
         }
-    },
-    userController,
+    }
 };
 
 module.exports = apiController;

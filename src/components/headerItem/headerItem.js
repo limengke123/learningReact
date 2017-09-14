@@ -10,9 +10,9 @@ class HeaderItem extends React.Component{
     }
     render(){
         const data = this.props.data;
-        const className = data.selected ? "header-item selected" : "header-item";
+        //const className = data.selected ? "header-item selected" : "header-item";
         return(
-            <Link className={className} to={data.url} onClick={this.linkHandler}>
+            <Link activeClassName="selected" className="header-item" to={data.url} onClick={this.linkHandler} onlyActiveOnIndex={true}>
                 {data.text}
             </Link>
         )

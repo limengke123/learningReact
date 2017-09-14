@@ -4,7 +4,7 @@
 
 const app = require('./app');
 const connectDatabase = require('./db/index');
-const dbConfig = require('./config/index');
+const {dbConfig} = require('./config/index');
 const mongoos = require('mongoose');
 mongoos.Promise = global.Promise;
 const port = "8080";
