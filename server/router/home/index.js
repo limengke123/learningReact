@@ -3,11 +3,13 @@
  */
 
 const router = require("koa-router");
+const path = require('path');
 
 const home = new router();
 
 home.get('/',async (ctx)=>{
-    ctx.body = '首页'
+    ctx.sendFile(path.resolve(__dirname, 'dist', 'index.html'));
 });
+
 
 module.exports = home;

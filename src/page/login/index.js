@@ -16,7 +16,7 @@ class Login extends React.Component {
 
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                post('/user/login', values)
+                post('/user/register', values)
                     .then((res) => {
                         if (res) {
                             if(res.status === "success"){
