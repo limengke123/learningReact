@@ -1,6 +1,7 @@
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const COLLECTTION = 'users';
 
 const UserSchema = new Schema({
     uid: { type: Number },
@@ -22,6 +23,7 @@ const UserSchema = new Schema({
     },
     updateTime: Number,
 });
+
 UserSchema.set('autoIndex', true);
-const User = mongoose.model('User',UserSchema);
+const User = mongoose.model(COLLECTTION,UserSchema);
 module.exports = User;

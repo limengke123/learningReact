@@ -3,9 +3,11 @@
  */
 
 const userHelper = require('./userHelper');
+const articleHelper = require('./articleHelper');
 
 const MainHelper = {
     userHelper,
+    articleHelper,
 };
 
 module.exports = MainHelper;

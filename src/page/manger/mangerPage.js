@@ -29,12 +29,12 @@ class MangerPage extends React.Component {
                                 </MenuItem>
                             </SubMenu>
 
-                            <SubMenu key="book" title={<span><Icon type="book"/><span>图书管理</span></span>}>
-                                <MenuItem key="book-list">
-                                    <Link to="/book/list">图书列表</Link>
+                            <SubMenu key="article" title={<span><Icon type="exception"/><span>文章管理</span></span>}>
+                                <MenuItem key="article-list">
+                                    <Link to="/article/list">文章列表</Link>
                                 </MenuItem>
-                                <MenuItem key="book-add">
-                                    <Link to="/book/add">添加图书</Link>
+                                <MenuItem key="article-add">
+                                    <Link to="/article/add">添加文章</Link>
                                 </MenuItem>
                             </SubMenu>
                         </Menu>

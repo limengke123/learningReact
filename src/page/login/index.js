@@ -16,11 +16,11 @@ class Login extends React.Component {
 
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                post('/user/register', values)
+                post('/user/login', values)
                     .then((res) => {
                         if (res) {
                             if(res.status === "success"){
-                                message.info('注册');
+                                message.info('登录成功');
                                 this.context.router.push('/');
                             } else if(res.status === "error"){
                                 message.info(res.msg)

@@ -5,8 +5,9 @@
 const {userHelper} = require('../../dbHelper/index');
 const {User} = require('../../model/index');
 const {codeStatus} = require('../../config/index');
-const {common} = codeStatus;
+const {common , account} = codeStatus;
 const {generateToken,} = require('../../middlerware/authControl');
+const AUTHORIZATION = 'Authorization';
 
 const addUser = async function (ctx) {
     const user = new User({
@@ -44,8 +45,7 @@ const login = async (ctx) => {
     if (res && res.data) {
         const tokenInfo = {username: res.data.username};
         const token = generateToken(tokenInfo);
-        ctx.response.set('Authorization', token);
-        //ctx.cookies.set('token', token);
+        ctx.response.set(AUTHORIZATION, token);
         ctx.body = res;
     } else {
         ctx.body = res;
@@ -57,8 +57,12 @@ const register = async function (ctx, next) {
     if (data) {
         ctx.body = Object.assign({data: data}, common.success);
     } else {
-        ctx.body = Object.assign({data: null}, common.error);
+        ctx.body = Object.assign({data: null}, account.dupName);
     }
+};
+const logout = async function (ctx, next) {
+    ctx.response.set(AUTHORIZATION, '');
+    ctx.body = Object.assign({data: true}, common.success);
 };
 
 
@@ -69,4 +73,5 @@ module.exports = {
     update,
     login,
     register,
+    logout,
 };

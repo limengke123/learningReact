@@ -5,6 +5,8 @@ const mongoose = require('mongoose');
 
 const Schema = mongoose.Schema;
 
+const COLLECTION = 'counters';
+
 const CounterSchema = Schema({
     tableName:{
         type:String,
@@ -16,7 +18,7 @@ const CounterSchema = Schema({
     }
 });
 
-const Counter = mongoose.model('counters',CounterSchema);
+const Counter = mongoose.model(COLLECTION,CounterSchema);
 
 const getIncrementId = async (tableName)=>{
     try{

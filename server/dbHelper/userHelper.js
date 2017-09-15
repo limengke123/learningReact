@@ -4,8 +4,8 @@
 const {User} = require('../model/index');
 const mongoose = require('mongoose');
 const {codeStatus} = require('../config/index');
-const {common,account} = codeStatus;
-const getIncrementId = require('../model/common/counters');
+const {common, account} = codeStatus;
+//const getIncrementId = require('../model/common/counters');
 
 //const COLLECTTION = 'User';
 //const User = mongoose.model(COLLECTTION);
@@ -22,14 +22,14 @@ const userHelper = {
         });
         return res;
     },
-    addUser: async (ctx,user) => {
+    addUser: async (ctx, user) => {
         user = await user.save().catch(err => {
             console.error(err);
-            ctx.throw(500,'内部错误')
+            ctx.throw(500, '内部错误')
         });
         return user;
     },
-    deleteUser: async (ctx,id) => {
+    deleteUser: async (ctx, id) => {
         let flag = false;
         console.log('flag==========>' + flag);
         await User.remove(id, err => {
@@ -37,9 +37,9 @@ const userHelper = {
             flag = !err
         }).catch(err => {
             console.error(err);
-            ctx.throw(500,'内部错误')
+            ctx.throw(500, '内部错误')
         });
-        console.log('flag=====await=====>'+flag);
+        console.log('flag=====await=====>' + flag);
         return flag
     },
     login: async function (info) {
@@ -69,20 +69,16 @@ const userHelper = {
     },
     register: async function (info) {
         try {
-            const uid = await getIncrementId("counters");
+            //const uid = await getIncrementId("users");
             //const uid = "48454545445";
-            if (uid) {
-                info.uid = uid;
-                info.updateTime = Date.now();
-                const doc = await User.create(info);
-                if (doc) {
-                    return {
-                        username: doc.username,
-                        email: doc.email
-                    }
+            //info.uid = uid;
+            info.updateTime = Date.now();
+            const doc = await User.create(info);
+            if (doc) {
+                return {
+                    username: doc.username,
+                    email: doc.email
                 }
-            } else {
-                return null;
             }
         } catch (err) {
             //logger.error('---------------The register action DB-Error:', err);

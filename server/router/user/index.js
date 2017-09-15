@@ -7,6 +7,7 @@ const user = new router();
 
 user.post('/login',userController.login);
 user.post('/register',userController.register);
+user.get('/getAll',userController.findAllUser);
 //user.post('/signUp',userController.signUp);
 
 module.exports = user;

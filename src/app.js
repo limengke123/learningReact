@@ -6,6 +6,7 @@ import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import MangerPage from './page/manger/mangerPage';
 import WelcomePage from './page/welcome/index';
+import UserList from './page/userList/index';
 import LoginPage from './page/login/index';
 import './static/css/reset.css';
 import 'antd/dist/antd.less';
@@ -35,6 +36,7 @@ class App extends React.Component{
                 </Route>
                 <Route path="/manger" component={MangerPage}>
                     <IndexRoute component={WelcomePage}/>
+                    <Route path='/user/list' component={UserList}/>
                 </Route>
                 <Route path="/login" component={LoginPage}/>
             </Router>
