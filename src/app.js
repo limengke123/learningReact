@@ -7,7 +7,7 @@ import Footer from './components/footer/footer';
 import MangerPage from './page/manger/mangerPage';
 import WelcomePage from './page/welcome/index';
 import UserList from './page/userList/index';
-import LoginPage from './page/login/index';
+import LoginPage from './page/login/login';
 import './static/css/reset.css';
 import 'antd/dist/antd.less';
 import './app.less'
