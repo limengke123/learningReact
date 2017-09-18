@@ -2,7 +2,8 @@
  * Created by li on 2017/9/14.
  */
 const router = require('koa-router');
-const {userController} = require('../../controller/index')
+const {userController} = require('../../controller/index');
+const {authVerify} = require('../../middlerware/authControl');
 const user = new router();
 
 user.post('/login',userController.login);

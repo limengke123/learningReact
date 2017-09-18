@@ -21,7 +21,7 @@ const UserSchema = new Schema({
         type: String,
         required: true,
     },
-    updateTime: Number,
+    createTime: Number,
 });
 
 UserSchema.set('autoIndex', true);

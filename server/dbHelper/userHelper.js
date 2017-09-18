@@ -49,7 +49,7 @@ const userHelper = {
                 let res = null;
                 if (info.password === doc.password) {
                     const data = {
-                        /*uid: doc.uid,*/
+                        uid: doc.uid,
                         username: doc.username,
                         email: doc.email
                     };
@@ -70,7 +70,7 @@ const userHelper = {
     register: async function (info) {
         try {
             info.uid = await getIncrementId("users");
-            info.updateTime = Date.now();
+            info.createTime = Date.now();
             const doc = await User.create(info);
             if (doc) {
                 return {

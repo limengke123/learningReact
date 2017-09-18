@@ -43,8 +43,12 @@ class UserList extends React.Component{
             dataIndex: 'password',
             width: 150,
         }, {
-            title: 'updateTime',
-            dataIndex: 'updateTime',
+            title: 'email',
+            dataIndex: 'email',
+            width: 150,
+        }, {
+            title: 'createTime',
+            dataIndex: 'createTime',
             render:(text,record,index)=>{
                 return <span>{moment.unix(text/1000).format("YYYY-MM-DD HH:mm:ss")}</span>
             }

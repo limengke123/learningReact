@@ -1,6 +1,8 @@
 'use strict';
 import React from'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';
+import {Link} from 'react-router';
+import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
+import { post } from '../../../utils/utils';
 const FormItem = Form.Item;
 import './index.less'
 
@@ -9,20 +11,33 @@ class NormalLoginForm extends React.Component {
         super(...arguments);
         this.handleSubmit = this.handleSubmit.bind(this);
     }
-    handleSubmit(e){
+    handleSubmit (e) {
         e.preventDefault();
+
         this.props.form.validateFields((err, values) => {
             if (!err) {
-                console.log('Received values of form: ', values);
+                post('/user/login', values)
+                    .then((res) => {
+                        if (res) {
+                            if(res.status === "success"){
+                                message.info('登录成功');
+                                this.context.router.push('/');
+                            } else if(res.status === "error"){
+                                message.info(res.msg)
+                            }
+                        } else {
+                            message.info('服务端错误');
+                        }
+                    });
             }
         });
-    };
+    }
     render() {
         const { getFieldDecorator } = this.props.form;
         return (
             <Form onSubmit={this.handleSubmit} className="login-form">
                 <FormItem>
-                    {getFieldDecorator('userName', {
+                    {getFieldDecorator('username', {
                         rules: [{ required: true, message: 'Please input your username!' }],
                     })(
                         <Input prefix={<Icon type="user" style={{ fontSize: 13 }} />} placeholder="Username" />
@@ -46,13 +61,15 @@ class NormalLoginForm extends React.Component {
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    Or <a href="">register now!</a>
+                    Or <Link to="/register">register now!</Link>
                 </FormItem>
             </Form>
         );
     }
 }
-
+NormalLoginForm.contextTypes = {
+    router: React.PropTypes.object.isRequired
+};
 const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 export default WrappedNormalLoginForm;

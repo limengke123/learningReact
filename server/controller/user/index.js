@@ -7,9 +7,8 @@ const {User} = require('../../model/index');
 const {codeStatus} = require('../../config/index');
 const {common , account} = codeStatus;
 const {generateToken,} = require('../../middlerware/authControl');
-const AUTHORIZATION = 'Authorization';
 
-const addUser = async function (ctx) {
+/*const addUser = async function (ctx) {
     const user = new User({
         name: "limengke2",
         password: "123456",
@@ -20,14 +19,14 @@ const addUser = async function (ctx) {
         success: true,
         data
     }
-};
-const deleteUser = async (ctx) => {
+};*/
+/*const deleteUser = async (ctx) => {
     let data = await userHelper.deleteUser(ctx, {name: "limengke2"});
     ctx.body = {
         success: true,
         data
     }
-};
+};*/
 const findAllUser = async (ctx) => {
     const data = await userHelper.findAllUser();
     ctx.body = {
@@ -45,7 +44,7 @@ const login = async (ctx) => {
     if (res && res.data) {
         const tokenInfo = {username: res.data.username};
         const token = generateToken(tokenInfo);
-        ctx.response.set(AUTHORIZATION, token);
+        ctx.cookies.set('token',token);
         ctx.body = res;
     } else {
         ctx.body = res;
@@ -61,14 +60,13 @@ const register = async function (ctx, next) {
     }
 };
 const logout = async function (ctx, next) {
-    ctx.response.set(AUTHORIZATION, '');
+    ctx.cookies.set('token', '');
     ctx.body = Object.assign({data: true}, common.success);
 };
 
 
 module.exports = {
-    addUser,
-    deleteUser,
+
     findAllUser,
     update,
     login,

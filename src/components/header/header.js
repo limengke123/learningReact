@@ -24,6 +24,10 @@ export default class Header extends React.Component {
                     text: "一分钟",
                     url: "/login",
                     id: 4
+                }, {
+                    text: "命运",
+                    url: "/spider",
+                    id: 5
                 },
             ]
         }
