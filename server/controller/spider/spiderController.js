@@ -1,75 +1,38 @@
 /**
  * Created by li on 2017/9/1.
  */
-const fs = require('fs');
 const request = require("request-promise");
 const cheerio = require("cheerio");
 const mkdirp = require('mkdirp');
-const config = require('../../router/spider/config');
-/*const dowload = async (ctx,next)=>{
- const dir = 'images';
- let links = [];
- mkdirp(dir);
- var urls = [];
- let tasks = [];
- let downloadTask = [];
- let url = config.url;
- for(let i = 1; i<= config.size; i++){
- let link = `${url}_${i}.html`;
- if(i==1){
- link = `${url}.html`;
- }
- tasks.push(getResLink(i,link))
- }
- links = await Promise.all(tasks);
- console.log(`links============`,links.length);
-
- for(let i = 0; i<links.length;i++){
- let item = links[i];
- let index = item.split("___")[0];
- let src = item.split("___")[1];
- downloadTask.push(downloadImg(src,dir,index+links[i].substr(-4,4)));
- }
- await Promise.all(downloadTask);
- };
- async function downloadImg(url,dir,filename){
- console.log(`dowload begin----`,url);
- request.get(url).pipe(fs.createWriteStream(`${dir}/${filename}`)).on("close",function () {
- console.log(`dowload success`,url);
- });
-
- }
- async function getResLink(index,url) {
- const body = await request(url);
- let urls = [];
- var $ = cheerio.load(body);
- $(config.rule).each(function() {
- var src = $(this).attr('src');
- urls.push(src);
- });
- return `${index}___${urls[0]}`;
- }*/
 
 class Message {
     constructor(body) {
         this.body = body;
+        this.domain = 'https://segmentfault.com';
         this.getList = this.getList.bind(this);
         this.main = this.main.bind(this);
     }
     getList() {
         const $ = cheerio.load(this.body);
-        const rawLists = $(".stream-list").children();
+        const rawLists = $(".stream-list__item");
         let lists = [];
         rawLists.map((index,list)=>{
-            const _obj = {};
-            console.log(list)
             const title = $(list).find('.title a').text();
+            const link = $(list).find('.title a').attr('href');
             const author = $(list).find('.author').children().eq(0).find('span').children().first().text();
-            const time = $(list).find('.author').children().eq(0).find('span').children().filter(()=>(this.nodeType===3)).text();
-            //const author = $(list).find('.author').children().eq(0).find('span').children().first().text();
-            _obj.title = title;
-            _obj.author= author;
-            _obj.time= time;
+            const time = $(list).find('.author').children().eq(0).find('span').text().split("\n")[1].trim();
+            const place = $(list).find('.author').children().eq(0).find('span').children().last().text();
+            const avatar = $(list).find('.author').find('img').attr('src');
+            const excerpt = $(list).find('.excerpt ').text();
+            const _obj = {
+                title,
+                link:`${this.domain}${link}`,
+                author,
+                time,
+                place,
+                avatar,
+                excerpt,
+            };
             lists.push(_obj)
         });
         return lists;
@@ -80,10 +43,39 @@ class Message {
     }
 }
 const segementfaultBlogs = async (ctx) => {
-    const {url} = config;
+    //const {url} = config;
+    const query = ctx.query;
+    const type = query.type.toUpperCase();
+    let url = "";
+    switch (type){
+        case 'NEWEST':
+            url = `https://segmentfault.com/blogs/newest`;
+            break;
+        case 'HOTTEST':
+            url = `https://segmentfault.com/blogs/hottest`;
+            break;
+        default:
+            url = `https://segmentfault.com/blogs`;
+            break;
+    }
+    const page = query.page;
+    if(page>1){
+        url = `${url}?page=${page}`
+    }
     const body = await request(url);
-    const data = new Message(body);
-    ctx.body = data.main()
+    const html = new Message(body);
+    const data = html.main();
+    if(data){
+        ctx.body = {
+            success:true,
+            data
+        }
+    }else{
+        ctx.body = {
+            success:false,
+            data:"spider is not ok"
+        }
+    }
 };
 
 

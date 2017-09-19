@@ -3,33 +3,36 @@
  */
 import React from 'react';
 import './index.less';
-import {get} from '../../../utils/utils';
+import SpiderContent from '../../components/spiderContent/index';
+import {Tabs,BackTop} from 'antd';
+const TabPane = Tabs.TabPane;
 
-class SpiderPage extends React.Component{
-    constructor(){
+class SpiderPage extends React.Component {
+    constructor() {
         super(...arguments);
         this.state = {
-            html:""
+            sections: [],
+            isLoading: true
         };
-        this.fetchData = this.fetchData.bind(this);
     }
-    componentDidMount(){
-        this.fetchData()
+    onChange(key){
+        console.log(key)
     }
-    fetchData(){
-        get('/spider/segement')
-            .then(res=>res.json())
-            .then(result=>{
-                if(result){
-                    this.state.html = result.data;
-                }
-            })
-    }
-    render(){
-        const {html} = this.state;
-        return(
+    render() {
+        return (
             <div className="spider-page">
-                {html}
+                <Tabs defaultActiveKey="1" onChange={this.onChange}>
+                    <TabPane tab="推荐文章" key="1">
+                        <SpiderContent/>
+                    </TabPane>
+                    <TabPane tab="最新文章" key="2">
+                        <SpiderContent type="newest"/>
+                    </TabPane>
+                    <TabPane tab="热门文章" key="3">
+                        <SpiderContent type="hottest"/>
+                    </TabPane>
+                </Tabs>
+                <BackTop />
             </div>
         )
     }
