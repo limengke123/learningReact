@@ -34,9 +34,9 @@ export default class Header extends React.Component {
     }
 
     render() {
-        let headerItem = this.state.items.map(item => {
+        let headerItem = this.state.items.map((item,index) => {
             return (
-                <HeaderItem data={item} key={item.id}/>
+                <HeaderItem data={item} key={index}/>
             )
         });
         return (

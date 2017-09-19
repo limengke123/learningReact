@@ -47,9 +47,9 @@ class SpiderContent extends React.Component {
     }
 
     render() {
-        let sectionList = this.state.sections.map(section => {
+        let sectionList = this.state.sections.map((section,index )=> {
             return (
-                <SpiderItem section={section}/>
+                <SpiderItem section={section} key={index}/>
             )
         });
         return (

@@ -20,9 +20,9 @@ class HomeContent extends React.Component {
         }
     }
     render() {
-        const homeContent = this.state.items.map(item=>{
+        const homeContent = this.state.items.map((item,index)=>{
             return(
-                <CardItem data={item}/>
+                <CardItem data={item} key={index}/>
             )
         });
         return (

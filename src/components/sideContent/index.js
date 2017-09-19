@@ -31,9 +31,9 @@ class SideContent extends React.Component{
         return(
             <div className="side-content">
                 {
-                    this.state.items.map(item=>{
+                    this.state.items.map((item,index)=>{
                         return(
-                            <SideItem sideData={item}/>
+                            <SideItem sideData={item} key={index}/>
                         )
                     })
                 }
