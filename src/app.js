@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from './page/home/home';
-import {Router, Link, IndexRoute, Route, hashHistory, browserHistory} from 'react-router';
+import {Router, IndexRoute, Route, browserHistory} from 'react-router';
 import ListPage from './page/list/list';
 import SpiderPage from './page/spiderPage/index';
 import Header from './components/header/header';

@@ -1,11 +1,42 @@
-/**
- * Created by li on 2017/9/19.
- */
-import { combineReducers } from 'redux' // 利用combineReducers 合并reducers
-import { routerReducer } from 'react-router-redux' // 将routerReducer一起合并管理
-import update from './count' // 引入update这个reducer
+import { combineReducers } from 'redux'
+import { ADD_TODO, COMPLETE_TODO, SET_VISIBILITY_FILTER, VisibilityFilters } from '../actions/index'
+const { SHOW_ALL } = VisibilityFilters
 
-export default combineReducers({
-    update,
-    routing: routerReducer
+function visibilityFilter(state = SHOW_ALL, action) {
+    switch (action.type) {
+        case SET_VISIBILITY_FILTER:
+            return action.filter
+        default:
+            return state
+    }
+}
+
+function todos(state = [], action) {
+    switch (action.type) {
+        case ADD_TODO:
+            return [
+                ...state,
+                {
+                    text: action.text,
+                    completed: false
+                }
+            ]
+        case COMPLETE_TODO:
+            return [
+                ...state.slice(0, action.index),
+                Object.assign({}, state[action.index], {
+                    completed: true
+                }),
+                ...state.slice(action.index + 1)
+            ]
+        default:
+            return state
+    }
+}
+
+const todoApp = combineReducers({
+    visibilityFilter,
+    todos
 })
+
+export default todoApp

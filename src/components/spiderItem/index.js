@@ -8,7 +8,7 @@ class SpiderItem extends React.Component{
         const {title,avatar,time,place,author,excerpt,link} = this.props.section;
         return(
             <div className="spider-section">
-                <h2 className="title"><a href={link}>{title}</a></h2>
+                <h2 className="title"><a href={link} target="_blank">{title}</a></h2>
                 <div className="info">
                     <img src={avatar} alt={author}/>
                     <span>{time}发布于</span>
