@@ -4,6 +4,10 @@
 import React from 'react';
 import './index.less'
 class SpiderItem extends React.Component{
+    handlerModel = (e)=>{
+        e.preventDefault();
+
+    }
     render(){
         const {title,avatar,time,place,author,excerpt,link} = this.props.section;
         return(

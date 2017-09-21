@@ -78,9 +78,22 @@ const segementfaultBlogs = async (ctx) => {
     }
 };
 
+const segementfaultDetailPage = async (ctx)=>{
+    const query = ctx.query;
+    const id = query.id;
+    let url = `https://segmentfault.com/a/${id}`;
+    const body = await request(url);
+    const $ = cheerio.load(body);
+    const article = $(".article").html();
+    ctx.body = {
+        success:true,
+        data:article
+    }
+};
 
 module.exports = {
     segementfaultBlogs,
+    segementfaultDetailPage,
 };
 
 

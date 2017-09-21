@@ -16,13 +16,13 @@ export default class AddTodo extends Component {
     }
 
     handleClick(e) {
-        const node = this.refs.input
-        const text = node.value.trim()
-        this.props.onAddClick(text)
+        const node = this.refs.input;
+        const text = node.value.trim();
+        this.props.onAddClick(text);
         node.value = ''
     }
 }
 
 AddTodo.propTypes = {
     onAddClick: PropTypes.func.isRequired
-}
+};
