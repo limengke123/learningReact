@@ -13,7 +13,7 @@ import LoginWrapper from './page/loginWrapper/index';
 import LoginPage from './page/login/login';
 import RegisterPage from './page/register/index';
 import './static/css/reset.css';
-import 'antd/dist/antd.less';
+//import 'antd/dist/antd.less';
 import './app.less'
 
 class MainPage extends React.Component {
