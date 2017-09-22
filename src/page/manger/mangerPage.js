@@ -17,7 +17,6 @@ class MangerPage extends React.Component {
                 <header className="header">
                     <Icon type="flag"/><Link to="/">ReactManager</Link>
                 </header>
-
                 <main className="main">
                     <div className="menu">
                         <Menu mode="inline" theme="dark" style={{width: '240px'}}>

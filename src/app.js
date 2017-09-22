@@ -14,6 +14,7 @@ import LoginPage from './page/login/login';
 import RegisterPage from './page/register/index';
 import './static/css/reset.css';
 //import 'antd/dist/antd.less';
+//import 'react-quill/dist/quill.snow.css';
 import './app.less'
 
 class MainPage extends React.Component {

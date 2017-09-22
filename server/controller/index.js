@@ -3,7 +3,7 @@
  */
 
 const apiController = require('./api/index');
-const spiderController = require('./spider/spiderController');
+const spiderController = require('./spider/index');
 const userController = require('./user/index');
 
 const mainController = {
