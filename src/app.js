@@ -3,6 +3,7 @@ import HomePage from './page/home/home';
 import {Router, IndexRoute, Route, browserHistory} from 'react-router';
 import ListPage from './page/list/list';
 import SpiderPage from './page/spiderPage/index';
+import MoviePage from './page/moviePage/index';
 import Header from './components/header/header';
 import Footer from './components/footer/footer';
 import MangerPage from './page/manger/mangerPage';
@@ -39,6 +40,7 @@ class App extends React.Component {
                     <IndexRoute component={HomePage}/>
                     <Route path="/list" component={ListPage}/>
                     <Route path="/spider" component={SpiderPage}/>
+                    <Route path="/movie" component={MoviePage}/>
                 </Route>
                 <Route path="/manger" component={MangerPage}>
                     <IndexRoute component={WelcomePage}/>

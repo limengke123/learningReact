@@ -28,6 +28,10 @@ export default class Header extends React.Component {
                     text: "命运",
                     url: "/spider",
                     id: 5
+                },{
+                    text: "秋刀鱼",
+                    url: "/movie",
+                    id: 6
                 },
             ]
         }

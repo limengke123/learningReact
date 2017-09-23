@@ -4,7 +4,7 @@
   "description": "studing:react&koa2&mongodb",
   "main": "index.html",
   "scripts": {
-    "start": "nodemon --inspect ./server/index.js ",
+    "start": "nodemon ./server/index.js ",
     "dev": "node server.js",
     "hot": "node server_hot.js",
     "dist": "webpack --config webpack.config.js --progress --colors --watch -p"
