@@ -1,6 +1,7 @@
 import React from 'react';
 import MovieItem from '../movieItem/index';
 import { get } from '../../../utils/utils';
+import {Pagination,Spin} from 'antd';
 export default class MovieContent extends React.Component {
     constructor() {
         super(...arguments);
@@ -11,7 +12,16 @@ export default class MovieContent extends React.Component {
         }
     }
     fetchData = (page = 1) => {
-        let url = `/spider/dytt?type=${type}&page=$`
+        let url = `/spider/dytt?type=${this.state.type}&page=${page}`;
+        get(url)
+            .then(res => {
+                if (res.success === true) {
+                    this.setState({
+                        sections: res.data,
+                        isLoading: false,
+                    })
+                }
+            })
     }
     componentDidMount = () => {
         this.fetchData();
@@ -21,18 +31,21 @@ export default class MovieContent extends React.Component {
             sections: [],
             isLoading: true
         });
-        this.fetchData(pageNumber);
+        this.fetchData(pageNum);
     }
     render() {
         const { type } = this.props;
         const content = this.state.sections.map((section, index) => {
             return (
-                <MovieItem section key={index} />
+                <MovieItem section={section} key={index} />
             )
         })
         return (
             <div className="movie-content">
-
+                <Spin spinning={this.state.isLoading}>
+                    {content}
+                </Spin>
+                <Pagination onChange={this.onChange} total={100} />
             </div>
         )
     }

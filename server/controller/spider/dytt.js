@@ -35,17 +35,17 @@ class DYTT {
         const $ = cheerio.load(body);
         return $;
     }
-    getLists (){
+    getLists() {
         const $ = this.get$();
         const rawlists = $('.co_content8 table');
         let lists = [];
-        rawlists.map((index,list)=>{
+        rawlists.map((index, list) => {
             const firstRow = $(list).find('tr').eq(1);
             const secondRow = $(list).find('tr').eq(2);
             const thirdRow = $(list).find('tr').eq(3);
 
-            const title = firstRow.find('.ulink').text();
-            const href = firstRow.find('.ulink').attr('href');
+            const title = firstRow.find('.ulink:last-child').text();
+            const href = firstRow.find('.ulink:last-child').attr('href');
             const info = secondRow.find('font').text();
             const content = thirdRow.find('td').text();
             const link = `${this.domin}${href}`
@@ -54,9 +54,9 @@ class DYTT {
                 info,
                 content,
                 link
-            }) 
-        })  
-        return lists;  
+            })
+        })
+        return lists;
 
     }
     main() {
@@ -65,10 +65,11 @@ class DYTT {
 }
 
 
+
 const dytt = async (ctx) => {
     const query = ctx.query;
     const type = query && query.type && query.type.toUpperCase() || '';
-    const page = query && query.pag || 1;
+    const page = query && query.page || 1;
     let url = '';
     switch (type) {
         case 'NEW':
@@ -98,14 +99,22 @@ const dytt = async (ctx) => {
             success: true,
             data: list.main()
         }
-    } else{
+    } else {
         ctx.body = {
-            success:false,
-            data:"spider error"
+            success: false,
+            data: "spider error"
         }
     }
 };
+const detailPage = async (ctx) => {
+    const id = ctx.query.id || "";
+    ctx.body = {
+        success: true,
+        data: `detailPage${id}`
+    }
+}
 
 module.exports = {
-    dytt
+    dytt,
+    detailPage
 };

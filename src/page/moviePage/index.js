@@ -33,19 +33,19 @@ class MoviePage extends React.Component {
         }
     }
     render() {
+        const content =  this.state.sections.map((section, index) => {
+            return (
+                <TabPane key={index} tab={section.tab}>
+                    <MovieContent type={section.type} />
+                </TabPane>
+            )
+        })
         return (
             <div className="movie-page">
                 <Tabs defaultActiveKey="0">
-                    {
-                        this.state.sections.map((section, index) => {
-                            return (
-                                <TabPane key={index} tab={section.tab}>
-                                    <MovieContent type={section.type} />
-                                </TabPane>
-                            )
-                        })
-                    }
+                    {content}
                 </Tabs>
+                <BackTop />
             </div>
         )
     }

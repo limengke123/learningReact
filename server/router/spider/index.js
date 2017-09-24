@@ -11,6 +11,7 @@ const spider = new router();
 spider.get('/segement',segementfault.segementfaultBlogs);
 spider.get('/segement/detail',segementfault.segementfaultDetailPage);
 spider.get('/dytt',DYTT.dytt);
+spider.get('/dytt/detail',DYTT.detailPage);
 
 
 module.exports = spider;
