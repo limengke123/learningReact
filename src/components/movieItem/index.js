@@ -1,5 +1,5 @@
 import React from 'react';
-import './inde.less';
+import './index.less';
 
 export default class MovieItem extends React.Component{
     render(){
