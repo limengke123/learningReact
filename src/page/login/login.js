@@ -2,7 +2,7 @@
 import React from'react';
 import {Link} from 'react-router';
 import { Form, Icon, Input, Button, Checkbox,message } from 'antd';
-import { post } from '../../../utils/utils';
+import { post ,setCookie} from '../../../utils/utils';
 const FormItem = Form.Item;
 import './index.less'
 
@@ -21,6 +21,10 @@ class NormalLoginForm extends React.Component {
                         if (res) {
                             if(res.status === "success"){
                                 message.info('登录成功');
+                                alert(123);
+                                console.log(1)
+                                const userInfo = res.data;
+                                setCookie('userInfo',JSON.stringify(userInfo))
                                 this.context.router.push('/');
                             } else if(res.status === "error"){
                                 message.info(res.msg)

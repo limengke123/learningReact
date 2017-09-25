@@ -5,8 +5,8 @@
 * {
     webkit-tap-highlight-color: transparent;
 }
-html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp,
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
+a, abbr, acronym, address, big, cite, del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary,
@@ -46,10 +46,10 @@ input{
 html, body, form, fieldset, p, div, h1, h2, h3, h4, h5, h6 {
     -webkit-text-size-adjust: none;
 }
-h1, h2, h3, h4, h5, h6 {
+/* h1, h2, h3, h4, h5, h6 {
     font-size: 14px;
     font-weight: normal;
-}
+} */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
     display: block;
 }
@@ -64,22 +64,22 @@ body {
     font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Helvetica,Arial,PingFang SC,Source Han Sans CN,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
 }
 
-ol, ul {
+/* ol, ul {
     list-style: none;
-}
+} */
 
-blockquote, q {
+/* blockquote, q {
     quotes: none;
-}
+} */
 
 img,table{
     border:0
 }
 
-blockquote:before, blockquote:after, q:before, q:after {
+/* blockquote:before, blockquote:after, q:before, q:after {
     content: '';
     content: none;
-}
+} */
 
 ins {
     text-decoration: none;

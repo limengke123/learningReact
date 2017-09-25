@@ -2,7 +2,8 @@
  * Created by li on 2017/9/20.
  */
 import React from 'react';
-
+import MarkdownEditor from '../../components/mdEditor/index';
+import './index.less'
 class ArticleAdd extends React.Component {
     constructor(){
         super(...arguments);
@@ -20,7 +21,7 @@ class ArticleAdd extends React.Component {
     render() {
         return (
             <div className="add-article">
-
+                <MarkdownEditor/>  
             </div>
         )
     }
