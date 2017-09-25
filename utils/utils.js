@@ -13,33 +13,40 @@ const request = (method, url, body) => {
         body = body && JSON.stringify(body);
     }
 
-    return fetch(url,{
+    return fetch(url, {
         method,
-        headers:{
+        headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
             //'Access-Token': sessionStorage.getItem('access_token') || '' // 从sessionStorage中获取access token
         },
         body
     })
-        .then(res=>{
-            if(res.status ===401){
+        .then(res => {
+            if (res.status === 401) {
                 browserHistory.push('/login');
                 return Promise.reject('Unauthorized')
             } else {
                 const token = res.headers.get('access-token');
-                if(token){
+                if (token) {
                     sessionStorage.setItem('access_token', token);
                 }
                 return res.json();
             }
         })
 };
+const setCookie = (name, value, days) => {
+    const Days = days ? days : 30;
+    const exp = new Date();
+    exp.setTime(exp.getTime() + Days*24*60*60*1000);
+    document.cookie = `${name}=${encodeURI(value)};expires=${exp.toGMTString()};path=/;`
+}
 const utils = {
     getRandom,
     request,
-    get:url=>request("GET",url),
-    post:(url,body)=>request("POST",url,body),
+    get: url => request("GET", url),
+    post: (url, body) => request("POST", url, body),
+    setCookie,
 };
 
 module.exports = utils;

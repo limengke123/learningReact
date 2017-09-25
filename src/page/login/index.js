@@ -1,6 +1,6 @@
 import React from 'react';
 import { Icon, Form, Input, Button, message } from 'antd';
-import { post } from '../../../utils/utils';
+import { post ,setCookie} from '../../../utils/utils';
 import './index.less';
 
 const FormItem = Form.Item;
@@ -21,6 +21,10 @@ class Login extends React.Component {
                         if (res) {
                             if(res.status === "success"){
                                 message.info('登录成功');
+                                /*alert(123);
+                                console.log(1)
+                                const userInfo = res.data;
+                                setCookie('userInfo',JSON.stringify(userInfo))*/
                                 this.context.router.push('/');
                             } else if(res.status === "error"){
                                 message.info(res.msg)
