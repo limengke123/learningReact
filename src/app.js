@@ -1,6 +1,6 @@
 import React from "react";
 import HomePage from './page/home/home';
-import {Router, IndexRoute, Route, browserHistory} from 'react-router';
+import {Router, IndexRoute, Route, browserHistory,IndexRedirect} from 'react-router';
 import ListPage from './page/list/list';
 import SpiderPage from './page/spiderPage/index';
 import MoviePage from './page/moviePage/index';
@@ -50,6 +50,9 @@ class App extends React.Component {
                 <Route path="/signIn" component={LoginWrapper}>
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/register" component={RegisterPage}/>
+                </Route>
+                <Route path='*' >
+                    <IndexRedirect to="/"/>
                 </Route>
             </Router>
         )
