@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input} from 'antd';
+import {Input,Button,message} from 'antd';
 const {TextArea} = Input;
 import './index.less';
 import Remarkable from 'remarkable';
@@ -13,7 +13,8 @@ class MarkdownEditor extends React.Component {
             defaultContent: {
                 content: "默认文本",
                 title: "题目"
-            }
+            },
+            isLoading:false,
         };
     }
 
@@ -36,6 +37,16 @@ class MarkdownEditor extends React.Component {
             __html: md.render(this.state.content)
         }
     }
+    onSubmit = ()=>{
+        const {content,title} = this.state;
+        if(!content || !title){
+            const msg = `title和conten别为空嘛`;
+            message.error(msg);
+            return false;
+        }
+        console.log(content);
+        console.log(title);
+    }
 
     render() {
         const {title, content} = this.state.defaultContent;
@@ -50,6 +61,11 @@ class MarkdownEditor extends React.Component {
                                fontSize: "24px",
                                border: "1px solid transparent"
                            }}/>
+                    <Button 
+                    loading={this.state.isLoading} 
+                    onClick={this.onSubmit}>
+                        提交
+                        </Button>              
                 </div>
                 <div className="body">
                     <div className="rawInput">
