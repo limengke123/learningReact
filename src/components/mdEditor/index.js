@@ -1,44 +1,72 @@
 import React from 'react';
+import {Input} from 'antd';
+const {TextArea} = Input;
 import './index.less';
 import Remarkable from 'remarkable';
 
-export default class MarkdownEditor extends React.Component {
+class MarkdownEditor extends React.Component {
     constructor() {
         super(...arguments);
         this.state = {
-            value: "默认文本"
+            content: "",
+            title: "",
+            defaultContent: {
+                content: "默认文本",
+                title: "题目"
+            }
         };
     }
 
-    handleChange = () => {
+    contentChange = (event) => {
+        const target = event.target;
         this.setState({
-            value: this.refs.textarea.value
+            content: target.value
         })
-        console.log(this.refs.textarea.value)
+    }
+    titleChange = (event) => {
+        const target = event.target;
+        this.setState({
+            title: target.value
+        })
     }
 
     getRawMarkup = () => {
         const md = new Remarkable();
         return {
-            __html: md.render(this.state.value)
+            __html: md.render(this.state.content)
         }
     }
 
     render() {
-        const { value } = this.state;
+        const {title, content} = this.state.defaultContent;
         return (
             <div className="md-editor">
-                <div className="rawInput">
-                    <h2>此处输入文本</h2>
-                    <textarea cols="30" rows="10" ref="textarea"
-                        onChange={this.handleChange}
-                        defaultValue={value} />
+                <div className="title">
+                    <Input onChange={this.titleChange}
+                           name="title" placeholder={title}
+                           style={{
+                               height: "60px",
+                               lineHeight: "60px",
+                               fontSize: "24px",
+                               border: "1px solid transparent"
+                           }}/>
                 </div>
-                <div
-                    className="output"
-                    dangerouslySetInnerHTML={this.getRawMarkup()}
-                />
+                <div className="body">
+                    <div className="rawInput">
+                        <TextArea cols="30" rows="10" name="content"
+                                  onChange={this.contentChange}
+                                  autosize={{ minRows: 10 ,maxRows:30}}
+                                  placeholder={content}
+                        />
+                    </div>
+                    <div
+                        className="output"
+                        dangerouslySetInnerHTML={this.getRawMarkup()}
+                    />
+                </div>
             </div>
         )
     }
 }
+
+export default MarkdownEditor

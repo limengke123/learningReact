@@ -1,24 +1,37 @@
-.md-editor{
-    height: 100%;
+.md-editor {
+  height: 100%;
+  .body{
+    margin-top:30px;
+    display: flex;
     .rawInput{
-        width: 50%;
-        height: 100%;
-        display: inline-block;
-        h2{
-            height: 10%;
-            line-height: 4.41;
-            /*这个line-height有问题 这样布局有问题 整体布局需要用flex试试*/
-            text-align: center;
-        }
-        textarea{
-            width:100%;
-            height: 90%;
-        }
+      flex: 1;
+      font-size:16px;
     }
     .output{
-        width: 50%;
-        height: 100%;
-        display: inline-block;
-        vertical-align: top;
+      flex: 1;
+      border:1px solid #f5f5f5;
+      margin-left:20px;
+      background-color:#fff;
+      padding:5px 10px;
+
+      /**md编辑器css重置**/
+      pre{
+        padding: 16px;
+        overflow: auto;
+        font-size: 85%;
+        line-height: 1.45;
+        background-color: #f6f8fa;
+        border-radius: 3px;
+      }
+      li{
+        list-style-type: circle;
+      }
+      a{
+        color:#108ee9;
+      }
     }
+  }
+  .title{
+    height:60px;
+  }
 }
