@@ -5,18 +5,27 @@ const {articleHelper} = require('../../dbHelper/index');
 
 
 const addArticle = async (ctx) => {
-    const info = ctx.body;
-    const doc = await articleHelper.addArticle(info);
-    if(doc){
+    const info = ctx.request.body;
+    //const doc = await articleHelper.addArticle(info);
+    if(info){
         ctx.body = {
             success:true,
-            data : doc,
+            data : info,
         }
+    } else{
+        ctx.body={
+            success:false,
+            data:'添加文章失败',
+        }
+
     }
 };
 
 const getAllArticle = async (ctx) => {
-
+    ctx.body = {
+        success:true,
+        data:"all article!"
+    }
 };
 
 module.exports = {

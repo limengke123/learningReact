@@ -8,20 +8,14 @@ class ArticleAdd extends React.Component {
     constructor(){
         super(...arguments);
         this.state = {
-            text:"# This is a header\n\nAnd this is a paragraph\n\n```\naha\n```"
+            url:'article/addArticle' //article/addArticle /user/login
         }
-        //this.handlerChange = this.handlerChange.bind(this)
     }
-    handlerChange = (value)=>{
-        /*this.setState({
-            text:value
-        })*/
-        console.log(value)
-    };
     render() {
+        const {url} = this.state
         return (
             <div className="add-article">
-                <MarkdownEditor/>  
+                <MarkdownEditor url={url}/>
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';
 import {Input,Button,message} from 'antd';
 const {TextArea} = Input;
+import {post} from '../../../utils/utils';
 import './index.less';
 import Remarkable from 'remarkable';
 
@@ -39,6 +40,7 @@ class MarkdownEditor extends React.Component {
     }
     onSubmit = ()=>{
         const {content,title} = this.state;
+        const {url} = this.props;
         if(!content || !title){
             const msg = `title和conten别为空嘛`;
             message.error(msg);
@@ -46,6 +48,11 @@ class MarkdownEditor extends React.Component {
         }
         console.log(content);
         console.log(title);
+        post(url,{
+            content,
+            title
+        }).then(res=>console.log(res))
+
     }
 
     render() {
