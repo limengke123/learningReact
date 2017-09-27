@@ -5,6 +5,9 @@ const getRandom = (start = 0, end = 1) => {
     }
     return Math.random() * (end - start) + start;
 };
+
+/**请求地址**/
+const proxy = `http://localhost:8080`
 const request = (method, url, body) => {
     method = method.toUpperCase();
     if (method === "GET") {
@@ -13,7 +16,7 @@ const request = (method, url, body) => {
         body = body && JSON.stringify(body);
     }
 
-    return fetch(url, {
+    return fetch(`${proxy}${url}`, {
         method,
         headers: {
             'Content-Type': 'application/json',

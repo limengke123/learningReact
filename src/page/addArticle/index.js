@@ -8,7 +8,8 @@ class ArticleAdd extends React.Component {
     constructor(){
         super(...arguments);
         this.state = {
-            url:'article/addArticle' //article/addArticle /user/login
+            /**这里很奇怪，请求的时候会多一个article出来，暂时先请求一个绝对路径**/
+            url:'/article/addArticle' //article/addArticle /user/login
         }
     }
     render() {

@@ -6,11 +6,11 @@ const {articleHelper} = require('../../dbHelper/index');
 
 const addArticle = async (ctx) => {
     const info = ctx.request.body;
-    //const doc = await articleHelper.addArticle(info);
-    if(info){
+    const doc = await articleHelper.addArticle(info);
+    if(doc){
         ctx.body = {
             success:true,
-            data : info,
+            data : doc,
         }
     } else{
         ctx.body={

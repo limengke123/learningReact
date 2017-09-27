@@ -17,8 +17,11 @@ const ArticleSchema = new Schema({
         type:Number,
         default:Date.now()
     },
-    updateTime:Number,
-    text:String,
+    updateTime:{
+        type:Number,
+        default:Date.now()
+    },
+    content:String,
 });
 
 ArticleSchema.set('autoIndex',true);
