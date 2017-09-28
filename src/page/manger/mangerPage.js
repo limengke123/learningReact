@@ -31,7 +31,7 @@ class MangerPage extends React.Component {
 
                             <SubMenu key="article" title={<span><Icon type="exception"/><span>文章管理</span></span>}>
                                 <MenuItem key="article-list">
-                                    <Link to="/article/list">文章列表</Link>
+                                    <Link to="/article/lists">文章列表</Link>
                                 </MenuItem>
                                 <MenuItem key="article-add">
                                     <Link to="/article/add">添加文章</Link>
