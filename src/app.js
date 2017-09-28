@@ -10,6 +10,7 @@ import MangerPage from './page/manger/mangerPage';
 import WelcomePage from './page/welcome/index';
 import UserList from './page/userList/index';
 import ArticleAdd from './page/addArticle/index';
+import ArticleList from './page/articleList/index';
 import LoginWrapper from './page/loginWrapper/index';
 import LoginPage from './page/login/login';
 import RegisterPage from './page/register/index';
@@ -46,6 +47,7 @@ class App extends React.Component {
                     <IndexRoute component={WelcomePage}/>
                     <Route path='/user/list' component={UserList}/>
                     <Route path='/article/add' component={ArticleAdd}/>
+                    <Route path='/article/lists' component={ArticleList}/>
                 </Route>
                 <Route path="/signIn" component={LoginWrapper}>
                     <Route path="/login" component={LoginPage}/>

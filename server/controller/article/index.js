@@ -22,9 +22,10 @@ const addArticle = async (ctx) => {
 };
 
 const getAllArticle = async (ctx) => {
+    const data = await articleHelper.getAllArticle();
     ctx.body = {
         success:true,
-        data:"all article!"
+        data:data
     }
 };
 

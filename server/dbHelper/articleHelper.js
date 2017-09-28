@@ -6,12 +6,21 @@
  const getIncrementId = require('../model/common/counters');
 module.exports = {
     getAllArticle: async () => {
-
+            let query = Article.find({});
+            let res = [];
+            await query.exec((err, Article) => {
+                if (err) {
+                    console.log(err)
+                    res = []
+                } else {
+                    res = Article;
+                }
+            });
+            return res;
     },
     addArticle: async (info) => {
         try{
-            const uid = await getIncrementId('articles');
-            info.uid = uid;
+            info.uid = await getIncrementId('articles');
             const doc = await Article.create(info);
             if(doc){
                 return {
