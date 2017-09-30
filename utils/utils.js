@@ -42,7 +42,8 @@ const setCookie = (name, value, days) => {
     const Days = days ? days : 30;
     const exp = new Date();
     exp.setTime(exp.getTime() + Days*24*60*60*1000);
-    document.cookie = `${name}=${encodeURI(value)};expires=${exp.toGMTString()};path=/;`
+    document.cookie = `${name}=${encodeURI(value)};expires=${exp.toGMTString()};path=/;`;
+    console.log(`${name}=${encodeURI(value)};expires=${exp.toGMTString()};path=/;`)
 }
 const utils = {
     getRandom,
