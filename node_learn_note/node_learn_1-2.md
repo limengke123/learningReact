@@ -33,14 +33,14 @@
       this.children = [];
     }
 ```
-*node对获取到的文件内容进行了头尾包装，用process.dlopen()进行加载和执行)，如下*
+> node对获取到的文件内容进行了头尾包装，用process.dlopen()进行加载和执行)，如下
 ```js
     (function(exports,require,module,__filename,__dirname) {
       /**具体内容**/
       /**传入的参数中有__filename和__dirname**/
     })
 ```
-#####核心模块
+##### 核心模块
 * 核心模块分为c/c++和js编写的两部分，c/c++放在src目录下，js文件放在lib目录下。
 * 纯c/c++编写为内建模块，被编译成二进制文件，直接被加载到内存，直接执行。
 > 内建模块(c/c++) -> 核心模块(javascript) -> 文件模块
