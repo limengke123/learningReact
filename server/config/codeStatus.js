@@ -77,7 +77,7 @@ const common = {
     }
 }
 
-// 1* 为用户报错信息
+// node_learn_4* 为用户报错信息
 const account = {
     notInfo: {
         code: 10001,

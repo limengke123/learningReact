@@ -22,7 +22,7 @@ class Login extends React.Component {
                             if(res.status === "success"){
                                 message.info('登录成功');
                                 /*alert(123);
-                                console.log(1)
+                                console.log(node_learn_4)
                                 const userInfo = res.data;
                                 setCookie('userInfo',JSON.stringify(userInfo))*/
                                 this.context.router.push('/');

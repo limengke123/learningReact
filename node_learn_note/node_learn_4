@@ -1,0 +1,26 @@
+#### 4.异步编程
+1. 函数式编程
+  * 高阶函数
+  >把函数做为参数，或是将函数做为返回值的函数
+```js
+//一般函数
+var toString = Object.prototype.toString;
+var isString = (obj)=>{
+    return toString.call(obj) == "[object String]"
+}
+var isFunction = (obj)=>{
+    return toString.call(obj) == "[object Function]"
+}
+```
+```js
+//函数式写法
+var isType = (type)=>{
+    return (obj)=>{
+        return toString.call(obj) == `[object ${type}]`
+    }
+}
+//或者
+var isType = (type)=>(obj)=>toString.call(obj)==`[object ${type}]`
+```
+  * node在处理异常上形成一种约定，将异常做为回调函数的第一个实参传回，如果为空，则异步调用没有异常
+  * 自行编写的异步方法，也需要遵循一些原则：1.必须执行调用者传入的回调函数，2.正确传递回异常供调用者判断
